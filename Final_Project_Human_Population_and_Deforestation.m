@@ -220,21 +220,33 @@ PopAvRate = [Pop_Rate_Av_BRA, Pop_Rate_Av_US, Pop_Rate_Av_LIB];
 figure(5); clf
 bar(PopAvRate)
 
-GDPAv = [GDP_Av_BRA, GDP_Av_US, GDP_Av_LIB];
+GDPAv = [GDP_Av_US, GDP_Av_BRA, GDP_Av_LIB];
 
 figure(6); clf
+b = bar(X,GDPAv)
 bar(GDPAv)
+b.FaceColor = 'Flat';
+b.CData(2,:) = [0 1 0]
+b.CData(3,:) = [1 0 0]
+title('Average GDP in 1990')
+ylabel('Average GDP')
 
-GDPAvRate = [GDP_Rate_Av_BRA, GDP_Rate_Av_US, GDP_Rate_Av_LIB];
+GDPAvRate = [GDP_Rate_Av_US, GDP_Rate_Av_BRA, GDP_Rate_Av_LIB];
 
 figure(7); clf
 bar(GDPAvRate)
+b = bar(X, GDPAvRate)
+b.FaceColor = 'Flat';
+b.CData(2,:) = [0 1 0]
+b.CData(3,:) = [1 0 0]
+title('Average Rate of Change in GDP in 1990')
+ylabel('Average Rate of Change in GDP')
 %%
 ForestCover1990 = [Forest_US(1), Forest_BRA(1), Forest_LIB(1)];
 X = categorical({'United States', 'Brazil', 'Liberia'});
 X = reordercats(X, {'United States', 'Brazil', 'Liberia'});
 
-% do we need y-label?
+% do we need y-label? ==> probably yes? at least to be safe
 figure(8); clf
 b = bar(X, ForestCover1990)
 b.FaceColor = 'Flat';
