@@ -210,21 +210,30 @@ PopF_R2_LIB = stats(1,1);
 
 %%
 
-PopAv = [P_Av_BRA, P_Av_US, P_Av_LIB];
+PopAv = [P_Av_US, P_Av_BRA, P_Av_LIB];
 
 figure(4); clf
-bar(PopAv)
+b = bar(X, PopAv)
+b.FaceColor = 'flat';
+b.CData(2,:) = [0 1 0]
+b.CData(3,:) = [1 0 0]
+title('Average Population by Country')
+ylabel('Average Population 1990-2020')
 
-PopAvRate = [Pop_Rate_Av_BRA, Pop_Rate_Av_US, Pop_Rate_Av_LIB];
+PopAvRate = [Pop_Rate_Av_US, Pop_Rate_Av_BRA, Pop_Rate_Av_LIB];
 
 figure(5); clf
-bar(PopAvRate)
+b = bar(X, PopAvRate)
+b.FaceColor = 'flat';
+b.CData(2,:) = [0 1 0]
+b.CData(3,:) = [1 0 0]
+title('Average Rate of Population Growth by Country')
+ylabel('Average Rate of Population Growth 1990-2020')
 
 GDPAv = [GDP_Av_US, GDP_Av_BRA, GDP_Av_LIB];
 
 figure(6); clf
 b = bar(X,GDPAv)
-bar(GDPAv)
 b.FaceColor = 'Flat';
 b.CData(2,:) = [0 1 0]
 b.CData(3,:) = [1 0 0]
@@ -234,14 +243,13 @@ ylabel('Average GDP')
 GDPAvRate = [GDP_Rate_Av_US, GDP_Rate_Av_BRA, GDP_Rate_Av_LIB];
 
 figure(7); clf
-bar(GDPAvRate)
 b = bar(X, GDPAvRate)
 b.FaceColor = 'Flat';
 b.CData(2,:) = [0 1 0]
 b.CData(3,:) = [1 0 0]
 title('Average Rate of Change in GDP in 1990')
 ylabel('Average Rate of Change in GDP')
-%%
+
 ForestCover1990 = [Forest_US(1), Forest_BRA(1), Forest_LIB(1)];
 X = categorical({'United States', 'Brazil', 'Liberia'});
 X = reordercats(X, {'United States', 'Brazil', 'Liberia'});
