@@ -176,12 +176,12 @@ hold on
 subplot(2,1,2)
 yyaxis left
 plot(years, (100-Forest_US), 'k', 'LineWidth', 2)
-title('United States Forest Cover vs. GDP Over Time');
+title('United States Forest Cover vs. GDP per capita Over Time');
 xlabel('Time (years)');
 ylabel('Percent of Land Not Covered by Forest');
 yyaxis right
 plot(years_GDP, GDP_US, '--b', 'LineWidth', 2)
-ylabel('GDP ($USD)');
+ylabel('GDP per capita ($USD)');
 
 figure (2)
 newcolors2 = [0 0 0; 0 1 0];
@@ -201,12 +201,12 @@ hold on
 subplot(2,1,2)
 yyaxis left
 plot(years, (100-Forest_BRA), 'k', 'LineWidth', 2)
-title('Brazil Forest Cover vs. GDP Over Time');
+title('Brazil Forest Cover vs. GDP per capita Over Time');
 xlabel('Time (years)');
 ylabel('Percent of Land Not Covered by Forest');
 yyaxis right
 plot(years_GDP, GDP_BRA, '--g', 'LineWidth', 2)
-ylabel('GDP ($USD)');
+ylabel('GDP per capita ($USD)');
 
 figure (3); clf
 newcolors3 = [0 0 0; 1 0 0];
@@ -226,12 +226,12 @@ hold on
 subplot(2,1,2)
 yyaxis left
 plot(years, (100-Forest_LIB), 'k', 'LineWidth', 2)
-title('Liberia Forest Cover vs. GDP Over Time');
+title('Liberia Forest Cover vs. GDP per capita Over Time');
 xlabel('Time (years)');
 ylabel('Percent of Land Not Covered by Forest');
 yyaxis right
 plot(years_GDP, GDP_LIB, '--r', 'LineWidth', 2)
-ylabel('GDP ($USD)');
+ylabel('GDP per capita ($USD)');
 
 
 %%
@@ -279,14 +279,14 @@ title('Average GDP per capita from 1990-2019')
 ylabel('Average GDP per capita ($USD per person)')
 
 GDPAvRate = [GDP_Rate_Av_US, GDP_Rate_Av_BRA, GDP_Rate_Av_LIB];
-
+%%
 figure(7); clf
 b = bar(X, GDPAvRate)
 b.FaceColor = 'Flat';
 b.CData(2,:) = [0 1 0]
 b.CData(3,:) = [1 0 0]
-title('Average Rate of Change in GDP from 1990-2019')
-ylabel('Average Rate of Change in GDP ($USD per person per year)')
+title('Average Rate of Change in GDP per capita from 1990-2019')
+ylabel('Average Rate of Change in GDP per capita ($USD per person per year)')
 
 ForestCover1990 = [Forest_US(1), Forest_BRA(1), Forest_LIB(1)];
 
