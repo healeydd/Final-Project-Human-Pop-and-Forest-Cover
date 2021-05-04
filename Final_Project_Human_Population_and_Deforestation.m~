@@ -257,7 +257,7 @@ b.CData(2,:) = [0 1 0]
 b.CData(3,:) = [1 0 0]
 title('Average Population by Country')
 ylabel('Average Population 1990-2020')
-%%
+
 PopAvRate = [Pop_Rate_Av_US, Pop_Rate_Av_BRA, Pop_Rate_Av_LIB];
 
 figure(5); clf
