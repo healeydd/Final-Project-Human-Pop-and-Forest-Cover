@@ -171,6 +171,7 @@ ylabel('Percent of Land Not Covered by Forest');
 yyaxis right
 plot(years, Pop_US, 'b', 'LineWidth', 2)
 ylabel('Population');
+legend('Percent of Land Not Covered by Forest','Population','Location','south')
 
 hold on
 subplot(2,1,2)
@@ -182,6 +183,8 @@ ylabel('Percent of Land Not Covered by Forest');
 yyaxis right
 plot(years_GDP, GDP_US, '--b', 'LineWidth', 2)
 ylabel('GDP per capita ($USD)');
+legend('Percent of Land Not Covered by Forest','GDP per capita', 'Location', 'south')
+
 
 figure (2)
 newcolors2 = [0 0 0; 0 1 0];
@@ -196,6 +199,7 @@ ylabel('Percent of Land Not Covered by Forest');
 yyaxis right
 plot(years, Pop_BRA, 'g', 'LineWidth', 2)
 ylabel('Population');
+legend('Percent of Land Not Covered by Forest','Population', 'Location', 'northwest')
 
 hold on
 subplot(2,1,2)
@@ -207,6 +211,7 @@ ylabel('Percent of Land Not Covered by Forest');
 yyaxis right
 plot(years_GDP, GDP_BRA, '--g', 'LineWidth', 2)
 ylabel('GDP per capita ($USD)');
+legend('Percent of Land Not Covered by Forest','GDP per capita', 'Location', 'northwest')
 
 figure (3); clf
 newcolors3 = [0 0 0; 1 0 0];
@@ -221,6 +226,7 @@ ylabel('Percent of Land Not Covered by Forest');
 yyaxis right
 plot(years, Pop_LIB, 'r', 'LineWidth', 2)
 ylabel('Population');
+legend('Percent of Land Not Covered by Forest','Population', 'Location', 'northwest')
 
 hold on
 subplot(2,1,2)
@@ -232,7 +238,7 @@ ylabel('Percent of Land Not Covered by Forest');
 yyaxis right
 plot(years_GDP, GDP_LIB, '--r', 'LineWidth', 2)
 ylabel('GDP per capita ($USD)');
-
+legend('Percent of Land Not Covered by Forest','GDP per capita', 'Location', 'northwest')
 
 %%
 [~,~, ~, ~, stats] = regress(Pop_BRA, (100-Forest_BRA));
@@ -244,6 +250,14 @@ PopF_R2_US = stats(1,1);
 [~,~, ~, ~, stats] = regress(Pop_LIB, (100-Forest_LIB));
 PopF_R2_LIB = stats(1,1);
 
+[~,~, ~, ~, stats] = regress(GDP_BRA, (100-Forest_BRA(1:30)));
+GDPF_R2_BRA = stats(1,1);
+
+[~,~, ~, ~, stats] = regress(GDP_US, (100-Forest_US(1:30)));
+GDPF_R2_US = stats(1,1);
+
+[~,~, ~, ~, stats] = regress(GDP_LIB(11:30), (100-Forest_LIB(11:30)));
+GDPF_R2_LIB = stats(1,1);
 %%
 X = categorical({'United States', 'Brazil', 'Liberia'});
 X = reordercats(X, {'United States', 'Brazil', 'Liberia'});
@@ -311,3 +325,15 @@ legend('United States', 'Brazil', 'Liberia')
 title('Annual Forest Cover Rate of Change for 1990-2020')
 xlabel('Years')
 ylabel('Forest Cover Rate of Change (% per year)')
+
+%%
+F_90 = [Forest_US(1); Forest_BRA(1); Forest_LIB(1)];
+Pop_Av = [P_Av_US; P_Av_BRA; P_Av_LIB];
+PopRate = [Pop_Rate_Av_US; Pop_Rate_Av_BRA; Pop_Rate_Av_LIB];
+GDP_Av = [GDP_Av_US; GDP_Av_BRA; GDP_Av_LIB];
+GDPRate = [GDP_Rate_Av_US; GDP_Rate_Av_BRA; GDP_Rate_Av_LIB];
+varNames = {'Forest Cover in 1990', 'Average Population', 'Average Rate of Change in Population', 'Average GDP per capita', 'Average Rate of Change in GDP per capita'};
+rowNames = {'US', 'Brazil', 'Liberia'};
+T = table(F_90, Pop_Av, PopRate, GDP_Av, GDPRate, 'VariableNames', varNames, 'RowNames', rowNames)
+filename = 'Table.csv';
+writetable(T, filename);
