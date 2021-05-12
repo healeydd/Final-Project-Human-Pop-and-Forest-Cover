@@ -313,6 +313,7 @@ b.CData(2,:) = [0 1 0]
 b.CData(3,:) = [1 0 0]
 title('Percent of Forest Cover in 1990')
 ylabel('Percent of Forest Cover (% of land covered by forest)')
+ylim([0 100])
 
 %%
 % unit for forest cover rate of change?
