@@ -1,2 +1,3 @@
 # Alderete, Allen, Healy, and Wagner (2021)
 ## Graphic portrayal of the relationship between deforestation and population and GDP per capita
+This repository contains the necessary materials for "_Temporal Variability in Deforestation and the Implications for Human Populations_" submitted for the course Environmental Data Exploration and Analysis in 2021. Code included computes averages and rates of change for percent of land covered by forest, population, and GDP per capita for U.S., Brazil, and Liberia. In addition, it creates figures and statistical correlation of the three datasets. The code is run in [MATLAB](https://www.mathworks.com/products/matlab.html).
