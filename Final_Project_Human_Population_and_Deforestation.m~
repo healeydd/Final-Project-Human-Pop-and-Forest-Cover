@@ -32,6 +32,7 @@ GDP_BRA = table2array(GDPTable(1,5:34))';
 GDP_US = table2array(GDPTable(3,5:34))';
 GDP_LIB = table2array(GDPTable(2,5:34))';
 
+%% Preliminary Data Analysis
 %% Percent of Forest Cover Basic Statistics (means, rates of change)
 F_Av_BRA = mean(Forest_BRA);
 F_Av_US = mean(Forest_US);
@@ -318,7 +319,7 @@ ylabel('Average Rate of Change in GDP per capita ($USD per person per year)')
 
 ForestCover1990 = [Forest_US(1), Forest_BRA(1), Forest_LIB(1)];
 
-% Bar Graph of Forest Cover in 1990
+% Bar Graph 
 figure(8); clf
 b = bar(X, ForestCover1990)
 b.FaceColor = 'Flat';
@@ -328,7 +329,7 @@ title('Percent of Forest Cover in 1990')
 ylabel('Percent of Forest Cover (% of land covered by forest)')
 ylim([0 100])
 
-%% Plot of Annual Forest Cover Rate of Change for 1990-2000
+%%
 figure(9)
 plot(years, F_Rate_US, 'b', 'LineWidth', 2)
 hold on
